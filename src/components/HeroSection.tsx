@@ -8,8 +8,8 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-        className="text-center mb-10"
-      >
+        className="text-center mb-10">
+        
         <span className="text-accent font-bold tracking-widest text-xs uppercase">
           The Sunbeam Archive
         </span>
@@ -26,14 +26,14 @@ const HeroSection = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className="bg-card rounded-[24px] p-2 shadow-soft max-w-2xl mx-auto"
-      >
+        className="bg-card rounded-[24px] p-2 shadow-soft max-w-2xl mx-auto">
+        
         <div className="aspect-[4/5] rounded-[16px] overflow-hidden">
           <img
-            src={heroImage}
+
             alt="Baby Lily smiling in the garden"
-            className="object-cover w-full h-full"
-          />
+            className="object-cover w-full h-full" src="/lovable-uploads/b31ae89a-b91c-4946-a1ee-ffa0a9a0d0c3.jpg" />
+          
         </div>
         <div className="p-6 text-center">
           <p className="text-muted-foreground text-sm">
@@ -42,8 +42,8 @@ const HeroSection = () => {
           </p>
         </div>
       </motion.div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
