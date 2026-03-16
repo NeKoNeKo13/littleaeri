@@ -22,7 +22,7 @@ const TimelineCard = ({ image, label, title, description, index }: TimelineCardP
       whileHover={{ y: -4 }}
       className="bg-card rounded-[24px] p-2 shadow-soft transition-shadow hover:shadow-hover"
     >
-      <div className="aspect-[3/4] rounded-[16px] overflow-hidden bg-muted">
+      <div className="aspect-[4/5] rounded-[16px] overflow-hidden bg-muted">
         <motion.img
           src={image}
           alt={title}

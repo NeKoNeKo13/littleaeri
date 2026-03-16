@@ -56,7 +56,10 @@ const Index = () => {
         <StatsBar />
 
         {/* Timeline */}
-        <section className="py-16">
+        <section className="py-16 relative">
+          {/* The thread line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-[2px] border-l-2 border-dashed border-primary/20 -translate-x-1/2 hidden sm:block" />
+
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -65,21 +68,13 @@ const Index = () => {
           >
             Her Story So Far
           </motion.h2>
+
+          <div className="grid gap-10">
+            {events.map((event, i) => (
+              <TimelineCard key={i} {...event} index={i} />
+            ))}
+          </div>
         </section>
-      </div>
-
-      {/* Horizontal scroll timeline — full width */}
-      <section className="pb-16">
-        <div className="flex gap-6 overflow-x-auto px-4 sm:px-8 pb-6 snap-x snap-mandatory scrollbar-hide">
-          {events.map((event, i) => (
-            <div key={i} className="snap-center shrink-0 w-[85vw] sm:w-[70vw] md:w-[50vw] lg:w-[40vw]">
-              <TimelineCard {...event} index={i} />
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
 
         {/* Footer */}
         <footer className="py-12 text-center border-t border-border">
