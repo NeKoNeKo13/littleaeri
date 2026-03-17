@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface TimelineCardProps {
   images: string[];
@@ -12,10 +12,18 @@ interface TimelineCardProps {
 
 const TimelineCard = ({ images, label, title, description, index }: TimelineCardProps) => {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
   const hasMultiple = images.length > 1;
 
   const go = (dir: 1 | -1) => {
+    setDirection(dir);
     setCurrent((prev) => (prev + dir + images.length) % images.length);
+  };
+
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    if (Math.abs(info.offset.x) > 50) {
+      go(info.offset.x > 0 ? -1 : 1);
+    }
   };
 
   return (
@@ -37,11 +45,15 @@ const TimelineCard = ({ images, label, title, description, index }: TimelineCard
             key={current}
             src={images[current]}
             alt={`${title} — photo ${current + 1}`}
-            className="object-cover w-full h-full absolute inset-0"
-            initial={{ opacity: 0, x: 40 }}
+            className="object-cover w-full h-full absolute inset-0 touch-pan-y"
+            initial={{ opacity: 0, x: direction >= 0 ? 40 : -40 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
+            exit={{ opacity: 0, x: direction >= 0 ? -40 : 40 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            drag={hasMultiple ? "x" : false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.3}
+            onDragEnd={handleDragEnd}
           />
         </AnimatePresence>
 
