@@ -12,10 +12,18 @@ interface TimelineCardProps {
 
 const TimelineCard = ({ images, label, title, description, index }: TimelineCardProps) => {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
   const hasMultiple = images.length > 1;
 
   const go = (dir: 1 | -1) => {
+    setDirection(dir);
     setCurrent((prev) => (prev + dir + images.length) % images.length);
+  };
+
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    if (Math.abs(info.offset.x) > 50) {
+      go(info.offset.x > 0 ? -1 : 1);
+    }
   };
 
   return (
