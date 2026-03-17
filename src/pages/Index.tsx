@@ -11,7 +11,7 @@ import heroImg from "@/assets/hero-baby.jpg";
 
 const events = [
   {
-    image: newbornImg,
+    image: "/lovable-uploads/7884deb5-deac-4f7b-9bdf-e82e2c5f1d2e.jpg",
     label: "Day 01 — June 21",
     title: "The Day Everything Changed",
     description:

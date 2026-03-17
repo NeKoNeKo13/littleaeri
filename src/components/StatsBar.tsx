@@ -6,11 +6,11 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { label: "Age", value: "11 Months" },
-  { label: "Weight", value: "8.4 kg" },
+  { label: "Age", value: "12 Months" },
+  { label: "Weight", value: "10.4 kg" },
   { label: "Height", value: "72 cm" },
-  { label: "Teeth", value: "2" },
-  { label: "First Word", value: "Mama" },
+  { label: "Teeth", value: "10" },
+  { label: "First Word", value: "Papa" },
 ];
 
 const StatsBar = () => {
