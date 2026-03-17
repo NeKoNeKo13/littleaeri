@@ -45,11 +45,15 @@ const TimelineCard = ({ images, label, title, description, index }: TimelineCard
             key={current}
             src={images[current]}
             alt={`${title} — photo ${current + 1}`}
-            className="object-cover w-full h-full absolute inset-0"
-            initial={{ opacity: 0, x: 40 }}
+            className="object-cover w-full h-full absolute inset-0 touch-pan-y"
+            initial={{ opacity: 0, x: direction >= 0 ? 40 : -40 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
+            exit={{ opacity: 0, x: direction >= 0 ? -40 : 40 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            drag={hasMultiple ? "x" : false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.3}
+            onDragEnd={handleDragEnd}
           />
         </AnimatePresence>
 
