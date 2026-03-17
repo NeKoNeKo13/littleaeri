@@ -12,7 +12,7 @@ import heroImg from "@/assets/hero-baby.jpg";
 const events = [
   {
     image: newbornImg,
-    label: "Day 01 — March 15",
+    label: "Day 01 — June 21",
     title: "The Day Everything Changed",
     description:
       "She arrived at 6:42 AM, weighing 3.2 kg, with the tiniest hands we'd ever seen. The room was quiet except for her first breath — and then, everything was different.",
