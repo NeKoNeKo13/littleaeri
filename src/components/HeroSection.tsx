@@ -14,7 +14,7 @@ const HeroSection = () => {
           The Sunbeam Archive
         </span>
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display tracking-tighter text-foreground mt-4 mb-4">
-          Documenting Aeri's <First Trip Around the Sun<br />First Trip Around the Sun
+          Documenting Aeri's<br />First Trip Around the Sun
         </h1>
         <p className="text-lg text-muted-foreground max-w-[50ch] mx-auto leading-relaxed">
           A collection of golden moments, tiny milestones, and the small wonders
