@@ -1,14 +1,23 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 interface TimelineCardProps {
-  image: string;
+  images: string[];
   label: string;
   title: string;
   description: string;
   index: number;
 }
 
-const TimelineCard = ({ image, label, title, description, index }: TimelineCardProps) => {
+const TimelineCard = ({ images, label, title, description, index }: TimelineCardProps) => {
+  const [current, setCurrent] = useState(0);
+  const hasMultiple = images.length > 1;
+
+  const go = (dir: 1 | -1) => {
+    setCurrent((prev) => (prev + dir + images.length) % images.length);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,14 +31,54 @@ const TimelineCard = ({ image, label, title, description, index }: TimelineCardP
       whileHover={{ y: -4 }}
       className="bg-card rounded-[24px] p-2 shadow-soft transition-shadow hover:shadow-hover"
     >
-      <div className="aspect-[4/5] rounded-[16px] overflow-hidden bg-muted">
-        <motion.img
-          src={image}
-          alt={title}
-          className="object-cover w-full h-full"
-          whileHover={{ scale: 1.02, rotate: -1 }}
-          transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-        />
+      <div className="relative aspect-[4/5] rounded-[16px] overflow-hidden bg-muted group">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.img
+            key={current}
+            src={images[current]}
+            alt={`${title} — photo ${current + 1}`}
+            className="object-cover w-full h-full absolute inset-0"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          />
+        </AnimatePresence>
+
+        {hasMultiple && (
+          <>
+            <button
+              onClick={() => go(-1)}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/90"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-4 h-4 text-foreground" />
+            </button>
+            <button
+              onClick={() => go(1)}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/70 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background/90"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-4 h-4 text-foreground" />
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-1.5 h-1.5 rounded-full transition-all ${
+                    i === current
+                      ? "bg-background w-4"
+                      : "bg-background/50"
+                  }`}
+                  aria-label={`Go to photo ${i + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
       <div className="p-6">
         <span className="text-accent font-bold tracking-widest text-xs uppercase">
