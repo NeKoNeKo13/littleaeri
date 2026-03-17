@@ -11,35 +11,37 @@ import heroImg from "@/assets/hero-baby.jpg";
 
 const events = [
 {
-  image: "/lovable-uploads/7884deb5-deac-4f7b-9bdf-e82e2c5f1d2e.jpg",
+  images: [
+    "/lovable-uploads/7884deb5-deac-4f7b-9bdf-e82e2c5f1d2e.jpg",
+  ],
   label: "Day 01 — June 21",
   title: "The Day Everything Changed",
   description:
   "She arrived at 3:42 PM, weighing 3.2 kg, with the tiniest hands we'd ever seen. The room was quiet except for her first breath — and then, everything was different."
 },
 {
-  image: firstStepsImg,
+  images: [firstStepsImg],
   label: "Month 09 — December 8",
   title: "Ten Wobbly Steps",
   description:
   "Between the coffee table and the couch — ten whole steps. She looked as surprised as we were. Then she sat down, laughed, and did it again."
 },
 {
-  image: beachImg,
+  images: [beachImg],
   label: "Month 07 — October 20",
   title: "First Touch of Sand",
   description:
   "She wasn't sure about the sand at first, squeezing it between her fingers with deep suspicion. By sunset, she was digging like she'd done it her whole life."
 },
 {
-  image: heroImg,
+  images: [heroImg],
   label: "Month 06 — September 12",
   title: "The First Taste of Watermelon",
   description:
   "A sticky, red-faced afternoon in the garden. She wasn't sure at first, but by the third bite, we had a fan. The dress didn't survive."
 },
 {
-  image: birthdayImg,
+  images: [birthdayImg],
   label: "Month 12 — March 15",
   title: "One Whole Trip Around the Sun",
   description:
