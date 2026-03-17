@@ -15,7 +15,7 @@ const events = [
   label: "Day 01 — June 21",
   title: "The Day Everything Changed",
   description:
-  "She arrived at 6:42 AM, weighing 3.2 kg, with the tiniest hands we'd ever seen. The room was quiet except for her first breath — and then, everything was different."
+  "She arrived at 3:42 PM, weighing 3.2 kg, with the tiniest hands we'd ever seen. The room was quiet except for her first breath — and then, everything was different."
 },
 {
   image: firstStepsImg,
