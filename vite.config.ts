@@ -5,9 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // ADD THIS LINE: Replace 'your-repo-name' with your actual GitHub repository name
-  base: "/littleaeri/", 
-  
+  base: "/littleaeri/", // GitHub Pages repo name
+
   server: {
     host: "::",
     port: 8080,
@@ -15,10 +14,20 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+
+  // 🔥 This is the key part for SPA routing on GitHub Pages
+  build: {
+    outDir: "dist",
+    rollupOptions: {
+      input: path.resolve(__dirname, "index.html"),
     },
   },
 }));
