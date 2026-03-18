@@ -5,7 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/littleaeri/", // GitHub Pages repo name
+  // ❗ GitHub Pages repo name
+  base: "/littleaeri/",
 
   server: {
     host: "::",
@@ -23,11 +24,16 @@ export default defineConfig(({ mode }) => ({
     },
   },
 
-  // 🔥 This is the key part for SPA routing on GitHub Pages
   build: {
     outDir: "dist",
+
+    // Ensure index.html is the entry and paths are correctly resolved
     rollupOptions: {
       input: path.resolve(__dirname, "index.html"),
     },
   },
+
+  // Optional: ensure asset URLs are relative for SPA routing
+  // This is safer if you ever host under subpaths
+  // assetsDir: "assets",
 }));
