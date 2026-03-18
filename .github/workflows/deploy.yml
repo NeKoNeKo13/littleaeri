@@ -5,6 +5,7 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# ✅ Top-level permissions required for deploy-pages action
 permissions:
   contents: read
   pages: write
@@ -29,7 +30,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Copy index.html to 404.html for SPA routing
+      # ✅ SPA 404 fallback: copy index.html → 404.html
+      - name: Copy index.html to 404.html
         run: cp dist/index.html dist/404.html
 
       - name: Upload artifact
@@ -40,6 +42,11 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    # ✅ Ensure deploy job has correct permissions
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
