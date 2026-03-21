@@ -26,7 +26,7 @@ const events = [
   label: "Month 09 — December 8",
   title: "Ten Wobbly Steps",
   description:
-  "Between the coffee table and the couch — ten whole steps. She looked as surprised as we were. Then she sat down, laughed, and did it again."
+  "Between the coffee table and the couch — ten whole steps. She looked as surprised as we were. Then she sat down, laughed, and did it again :)."
 },
 {
   images: [beachImg, "/lovable-uploads/b31ae89a-b91c-4946-a1ee-ffa0a9a0d0c3.jpg", "/lovable-uploads/eb543595-0464-45e9-894e-4dfbd0e17573.jpg"],
